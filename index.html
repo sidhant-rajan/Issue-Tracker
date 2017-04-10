@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="myApp"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Hello from DoSelect!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/angular-material.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+  </head>
+
+  <body ng-controller="myCtrl">
+    <center><p>Simple Issue Tracker</p></center>
+    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-small btn-primary" ng-click="showIssuetemplate()" ng-show="hide" style="margin-bottom:30px;">Create Issue</button></div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="createissue col-md-12" ng-hide="hide" style="border:2px solid black;padding:0;">
+            <div class="heading">
+                <center>Create Issue</center>
+            </div>
+                
+            <form name="form1">
+             <table class="table table-hover">
+             <tbody>
+             <tr>
+                 <td>Issue Type</td>
+                 <td><select ng-model="issuetmp.type" name="type" ng-model="form1.first_field">
+                    <option value="bug">Bug</option>
+                    <option value="improvement">Improvement</option>
+                    <option value="feature">Feature</option>
+                </select></td>
+             </tr>
+             <tr>
+                 <td>Summary</td>
+                 <td><input type="text" ng-model="issuetmp.summ" ng-model="form1.second_field"></td>
+             </tr>
+             <tr>
+                 <td>Priority</td>
+                 <td> <select ng-model="issuetmp.prior" name="prior" ng-model="form1.third_field">
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="high">High</option>
+                </select></td>
+             </tr>
+             <tr>
+                 <td>Description</td>
+                 <td> <textarea rows="4" cols="50" ng-model="issuetmp.desc" ng-model="form1.fourth_field"></textarea></td>
+             </tr>
+             <tr>
+                 <td>Assingee</td>
+                 <td><select ng-model="issuetmp.assign" ng-model="form1.fifth_field">
+             <option ng-repeat="x in users">{{x}}</option>
+            </select></td>
+             </tr>
+             </tbody>
+             </table>
+            <!-- Issue Type
+                <select ng-model="issuetmp.type" name="type">
+                    <option value="bug">Bug</option>
+                    <option value="improvement">Improvement</option>
+                    <option value="feature">Feature</option>
+                </select></br>
+            Summary
+            <input type="text" ng-model="issuetmp.summ"></br>
+            Priority
+            <select ng-model="issuetmp.prior" name="prior">
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="high">High</option>
+                </select></br>
+             Description
+             <textarea rows="4" cols="50" ng-model="issuetmp.desc"></textarea></br>
+             Assingee
+             <select ng-model="issuetmp.assign">
+             <option ng-repeat="x in users">{{x}}</option>
+            </select></br> -->
+            <center><input type="submit" value="Create" ng-click="addIssue(issuetmp)"></center>
+            </form>
+            </div>
+            <div class="issues col-md-12" ng-bind-html="template" style="border:2px solid black;padding:0;">
+               
+
+            </div>
+        </div>
+        <div class="col-md-4" >
+            <div class="heading">
+                <center>Users</center>
+            </div>
+            <div ng-repeat="user in users">
+                <div ng-click="showIssue(user)"><a>{{user}}</a></div>
+            </div>
+           <hr>
+            <form role="form">
+            <input type="text" ng-model="usertmp" placeholder="Enter name to add" ></br></br>
+                <button class="btn btn-small btn-primary" ng-click="addUser(usertmp)">
+                    Add User
+                </button>
+            </form>
+                
+           
+        </div>
+    </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+    <script src="scripts/angular-material.js"></script>
+     <script src="scripts/angular-aria.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="scripts/index.js"></script>
+    
+  </body>
+</html>
