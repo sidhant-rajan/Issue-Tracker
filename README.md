@@ -1,4 +1,4 @@
-# DoSelect1
-------------
+# Issue Tracker
+----------------
 
-This is the solution of the first question i.e Issue Tracker of the test held on doselect platform.
+This is a simple issue-tracker app made on AngularJS.
